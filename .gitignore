@@ -1,0 +1,73 @@
+# ============================================================
+#  MATLAB / Simulink 项目专用 .gitignore
+#  作用：把这些"自动生成的垃圾"挡在 Git 之外
+#
+#  为什么关键：
+#  Simulink 每次编译/仿真都会生成 slprj/ 缓存目录，
+#  动辄几百 MB 到几个 GB，而且每次内容都变。
+#  一旦提交进去，仓库会瞬间膨胀，以后每次提交都又慢又乱，
+#  而且这些文件对别人毫无用处（他们本地会自动重新生成）。
+# ============================================================
+
+# ---------- Simulink 编译缓存/代码生成产物（最重要，绝对不要提交）----------
+slprj/
+slprj.slx/
+*.slxc
+*.slxp
+*.slx.r20*
+*.slx.autosave
+sldemo_fuelsys/
+.SimulinkCache/
+.SimulinkCodeGenFolder/
+Simulink_Cache/
+codegen/
+*_rtw/
+*_ert_rtw/
+*.rtw
+*.rti
+*.a2l
+*.mk
+
+# ---------- 嵌入式代码生成产物（做 DSP/单片机方向的会用到）----------
+*.exe
+*.dll
+*.lib
+*.obj
+*.o
+*.map
+*.elf
+*.hex
+*.s19
+*.bin
+*.out
+
+# ---------- MATLAB 编辑器/会话自动保存 ----------
+*.asv
+*.autosave
+*.m~
+*~
+matlab.mat
+*.slx~
+*.mdl~
+
+# ---------- Simulink Project 的用户个人设置 ----------
+resources/project/
+*.slproj.user
+*.mlproj.user
+*.user
+
+# ---------- 大体积数据文件（按需解注）----------
+# .mat 文件可能几百 MB。如果你有大 .mat 数据不想传，
+# 把下面这行的 # 去掉；如果 .mat 是项目必需的小数据，就保持注释。
+#*.mat
+
+# ---------- 操作系统垃圾 ----------
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# ---------- VSCode ----------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
